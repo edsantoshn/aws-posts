@@ -1,0 +1,12 @@
+Resources:
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: ${self:custom.config.${self:custom.stage}.my_first_bucket}
+
+S3Bucket2:
+    Type: 'AWS::S3::Bucket'
+    DeletionPolicy: Delete
+    Properties:
+      BucketName: ${self:custom.config.${self:custom.stage}.my_second_bucket}

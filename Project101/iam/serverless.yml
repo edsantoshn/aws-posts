@@ -1,0 +1,25 @@
+
+service: nombre-de-proyecto-iam
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: ${self:custom.stage, 'dev'}
+  region: ${self:custom.config.${self:custom.stage}.my-region}
+
+custom:
+  stage: ${opt:stage, 'dev'}
+  
+  config:
+    dev:
+      account_id: ''
+      my-region: ${opt:region, 'us-east-2'}
+
+    prd:
+      account_id: ''
+      my-region: ${opt:region, 'us-east-1'}
+
+
+resources:
+- ${file(policies.yml)}
+- ${file(roles.yml)}

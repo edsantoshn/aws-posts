@@ -1,0 +1,17 @@
+Resources:
+  DemoListoProEdSantoHnRol:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: DemoListoProEdSantoHnRol
+      MaxSessionDuration: 3600
+      AssumeRolePolicyDocument:
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: lambda.amazonaws.com
+          Action:
+          - sts:AssumeRole
+      ManagedPolicyArns:
+      - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      - Ref: DemoListoProEdSantosHnPolicy
+      - Ref: DemoListoProEdSantosHnDynamoPolicy
